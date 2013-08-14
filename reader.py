@@ -31,8 +31,11 @@ def printer(maze):
 
 #remove padding
 def remover(maz_e):
-    maz_e.remove(maz_e[0])
-    maz_e.remove(maz_e[len(maz_e)-1])
+    maz_e.pop(0)
+    maz_e.pop()
+    for cross in maz_e:
+        cross.pop(0)
+        cross.pop()
     return maz_e
 
 #open file
@@ -56,10 +59,6 @@ def read(name):
     pad_st_end(all[0])
     return all
 maze = read("maze.txt")
-r_maze = remover(solver.slove(padding(maze)))
-#print(maze)
-#print(len(all))
-#printer(maze)
+sol_maze = remover(solver.slove(padding(maze)))
 
-#print("ppppppppppppppppppppppp")
-printer(r_maze)
+printer(sol_maze)
