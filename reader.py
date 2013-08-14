@@ -6,7 +6,7 @@ def pad_st_end(row):
     global st_end
     st_end = []
     for i in range(0,len(row)+2):
-        st_end.append('p')
+        st_end.append('#')
     #print(st_end)
 
 #create  padding
@@ -15,10 +15,10 @@ def padding(maz_e):
     padded_maze.append(st_end)
     temp_row = []
     for row in maz_e:
-        temp_row.append('p')
+        temp_row.append('#')
         for i in row:
             temp_row.append(i)
-        temp_row.append('p')
+        temp_row.append('#')
         padded_maze.append(temp_row)
         temp_row = []
     padded_maze.append(st_end)
@@ -27,12 +27,12 @@ def padding(maz_e):
 #print file
 def printer(maze):
     for i in maze:
-        print(i)
+        print(' '.join(i))
 
 #remove padding
 def remover(maz_e):
-    maz_e.remove(st_end)
-    maz_e.remove(st_end)
+    maz_e.remove(maz_e[0])
+    maz_e.remove(maz_e[len(maz_e)-1])
     return maz_e
 
 #open file
@@ -56,13 +56,10 @@ def read(name):
     pad_st_end(all[0])
     return all
 maze = read("maze.txt")
-p_maze = padding(maze)
-solver.slove(p_maze)
-#printer(p_maze)
-#r_maze = remover(p_maze)
+r_maze = remover(solver.slove(padding(maze)))
 #print(maze)
 #print(len(all))
 #printer(maze)
 
 #print("ppppppppppppppppppppppp")
-#printer(r_maze)
+printer(r_maze)

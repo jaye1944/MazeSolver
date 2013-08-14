@@ -1,4 +1,24 @@
 def slove(maze):
-    for i in range(1,len(maze)-2):
-        print(maze[i])
-
+    down = len(maze)-1
+    cross = len(maze[0])-1
+    while True:
+        change = True
+        for i in range(1,down):
+            for j in range(1,cross):
+                k = maze[i][j]
+                if k == '.':
+                    if ((maze[i][j-1]=='#' or maze[i][j-1]=='b') and (maze[i-1][j]=='#' or maze[i-1][j]=='b') and (maze[i][j+1]=='#' or maze[i][j+1]=='b')):
+                        maze[i][j] = 'b'
+                        change = False
+                    elif ((maze[i-1][j]=='#' or maze[i-1][j]=='b') and (maze[i][j+1]=='#' or maze[i][j+1]=='b') and (maze[i+1][j]=='#' or maze[i+1][j]=='b')):
+                        maze[i][j] = 'b'
+                        change = False
+                    elif ((maze[i][j+1]=='#' or maze[i][j+1]=='b') and (maze[i+1][j]=='#' or maze[i+1][j]=='b') and (maze[i][j-1]=='#' or maze[i][j-1]=='b')):
+                        maze[i][j] = 'b'
+                        change = False
+                    elif ((maze[i+1][j]=='#' or maze[i+1][j]=='b') and (maze[i][j-1]=='#' or maze[i][j-1]=='b') and (maze[i-1][j]=='#' or maze[i-1][j]=='b')):
+                        maze[i][j] = 'b'
+                        change = False
+        if change:
+            break
+    return maze
