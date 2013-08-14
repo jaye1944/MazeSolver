@@ -1,3 +1,4 @@
+import solver
 global st_end
 
 #cerate 1 and last row
@@ -56,11 +57,12 @@ def read(name):
     return all
 maze = read("maze.txt")
 p_maze = padding(maze)
-printer(p_maze)
-r_maze = remover(p_maze)
+solver.slove(p_maze)
+#printer(p_maze)
+#r_maze = remover(p_maze)
 #print(maze)
 #print(len(all))
 #printer(maze)
 
-print("ppppppppppppppppppppppp")
-printer(r_maze)
+#print("ppppppppppppppppppppppp")
+#printer(r_maze)
