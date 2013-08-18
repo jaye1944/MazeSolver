@@ -2,6 +2,8 @@ global d
 global c
 global path_down
 global path_cross
+global path
+path = []
 
 def slove(maze):
     down = len(maze)-1
@@ -31,38 +33,41 @@ def slove(maze):
 def re_arrange(i):
     global c
     global d
+    global path
     d = path_down[i]
     c = path_cross[i]
+    path.append(d)
+    path.append(c)
     path_down.pop(i)
     path_cross.pop(i)
 
 
 def arrange(start):
-    path = []
     global c
     global d
     global path_cross
     global path_down
     d = start[0]
     c = start[1]
-    while len(path_cross) != 0 :
+    while len(path_cross) != 0:
         for i in range(0,len(path_cross)):
             if ((d+1)== path_down[i]) and (c == path_cross[i]) :
-                print ("down ")
+                #print ("down ")
                 re_arrange(i)
                 break
             elif ((d-1)== path_down[i]) and (c == path_cross[i]) :
-                print ("up ")
+                #print ("up ")
                 re_arrange(i)
                 break
             elif (d == path_down[i]) and ((c+1) == path_cross[i]):
-                print("right ")
+                #print("right ")
                 re_arrange(i)
                 break
             elif (d == path_down[i]) and ((c-1) == path_cross[i]):
-                print("left ")
+                #print("left ")
                 re_arrange(i)
                 break
+    return path
 
 def getCodinates(slove_maze):
     global path_cross
@@ -80,7 +85,4 @@ def getCodinates(slove_maze):
             elif slove_maze[i][j] == 's':
                 start.append(i)
                 start.append(j)
-    arrange(start)
-    #print(path_down)
-    #print(path_cross)
-    #print(start)
+    return arrange(start)
