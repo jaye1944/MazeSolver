@@ -22,3 +22,14 @@ def slove(maze):
         if not_change:
             break
     return maze
+
+def getCodinates(slove_maze):
+    path =[]
+    down = len(slove_maze)
+    cross = len(slove_maze[0])
+    for i in range(0,down):
+        for j in range(0,cross):
+            if slove_maze[i][j] == '.':
+                path.append(i)
+                path.append(j)
+    print(path)

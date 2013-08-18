@@ -60,5 +60,5 @@ def read(name):
     return all
 maze = read("maze.txt")
 sol_maze = remover(solver.slove(padding(maze)))
-
+solver.getCodinates(sol_maze)
 printer(sol_maze)
